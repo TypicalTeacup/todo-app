@@ -1,0 +1,33 @@
+Enum priority {
+  low
+  medium
+  high
+}
+
+Enum status {
+  todo
+  in_progress
+  done
+}
+Table users {
+  id integer PK
+  laravel_sanctum_stuff yes
+}
+
+Table todos {
+  id integer PK
+  user_id integer [NOT NULL]
+  name varchar(255) [NOT NULL]
+  description text
+  todo_priority priority [NOT NULL]
+  todo_status status [NOT NULL]
+  deadline timestamp [NOT NULL]
+}
+
+Table link_tokens {
+  id integer PK
+  todo_id integer
+}
+
+Ref: users.id < todos.user_id
+Ref: todos.id < link_tokens.todo_id

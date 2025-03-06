@@ -20,3 +20,7 @@
         <input type="submit" value="@yield('submitText')" />
     </form>
 @endsection
+
+@push('scripts')
+    <script src="/js/newTodo.js"></script>
+@endpush

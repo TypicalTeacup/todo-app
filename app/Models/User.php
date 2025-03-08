@@ -50,7 +50,7 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-    protected function todos(): HasMany
+    public function todos(): HasMany
     {
         return $this->hasMany(Todo::class);
     }

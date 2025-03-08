@@ -41,7 +41,13 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::loginView(fn() => view('auth.login'));
         Fortify::registerView(fn() => view('auth.register'));
-        Fortify::resetPasswordView(fn() => view('auth.forgotPassword'));
+        Fortify::resetPasswordView(
+            fn(Request $request) =>
+            view('auth.passwordReset.reset', ['request' => $request])
+        );
+        Fortify::requestPasswordResetLinkView(
+            fn() => view('auth.passwordReset.requestLink')
+        );
         Fortify::verifyEmailView(fn() => view('auth.verify'));
     }
 }
